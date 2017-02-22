@@ -1,5 +1,7 @@
 # Fishing Cat Client
 
+[![Gem Version](https://badge.fury.io/rb/fishing-cat-client.svg)](https://badge.fury.io/rb/fishing-cat-client)
+
 ![Fising Cat](https://cloud.githubusercontent.com/assets/706275/23012983/10ed1fa8-f46c-11e6-9093-1a44aa5aa1bf.png)
 
 ## Install
