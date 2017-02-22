@@ -1,2 +1,3 @@
 #!/usr/bin/env ruby
-require 'fishing-cat/client'
+require 'fishing-cat/client/cli'
+FishingCat::Client::CLI.start(ARGV)
