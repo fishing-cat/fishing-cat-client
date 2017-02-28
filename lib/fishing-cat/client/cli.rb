@@ -9,8 +9,8 @@ module FishingCat
       desc :test, 'Test'
       def test
         config = YAML.load_file('tmp/config.yml')
-        FishingCat::Client.setup(config)
-        message = FishingCat::Client::Mailer.create(config)
+        FishingCat::Client.setup(config:config)
+        message = FishingCat::Client::Mailer.create(cid:cid, pid:pid, config:config)
         puts message.body
         # message.deliver_now
       end
