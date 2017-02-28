@@ -8,7 +8,10 @@ module FishingCat
       params = {
         prepend_view_path: config['mua']['prepend_view_path'],
         delivery_method: config['mua']['delivery_method']&.to_sym,
-        smtp_settings: config['mua']['smtp_settings'],
+        smtp_settings: {
+          address: config['mua']['smtp_settings']['address'],
+          port: config['mua']['smtp_settings']['port']
+        }
       }
       ActionMailer::Base.prepend_view_path(params[:prepend_view_path])
       ActionMailer::Base.delivery_method = params[:delivery_method]
@@ -16,7 +19,7 @@ module FishingCat
     end
 
     class Mailer < ActionMailer::Base
-      def create(cid:, pid:, config:)
+      def create(cid:, pid:, to:, config:)
         @cid = cid
         @pid = pid
         @phishing_image_url = "#{config['phishing_base_url']}/images/#{@cid}/#{@pid}"
@@ -24,7 +27,7 @@ module FishingCat
         params = {
           subject: config['header']['subject'],
           from: config['header']['from'],
-          to: config['header']['to'],
+          to: to,
           template_path: config['mua']['template_path'],
           template_name: config['mua']['template_name'],
         }
